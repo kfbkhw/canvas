@@ -7,6 +7,22 @@
     </head>
     <body>
         <canvas id="canvas"></canvas>
+        <svg>
+            <defs>
+                <filter id="filter">
+                    <feGaussianBlur
+                        in="SourceGraphic"
+                        stdDeviation="30"
+                        result="blur"
+                    />
+                    <feColorMatrix
+                        in="blur"
+                        mode="matrix"
+                        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 100 -20"
+                    />
+                </filter>
+            </defs>
+        </svg>
         <script type="module" src="./src/app.ts"></script>
     </body>
 </html>
