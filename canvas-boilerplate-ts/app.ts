@@ -1,3 +1,6 @@
+const BACKGROUND_COLOR = '#fff';
+const FPS = 60;
+
 class Canvas {
     readonly $body: HTMLBodyElement;
     readonly $canvas: HTMLCanvasElement;
@@ -32,24 +35,27 @@ class Canvas {
         this.ctx.scale(this.scale, this.scale);
     }
 
-    render(callbackFn: () => void) {
-        setTimeout(() => {
-            window.requestAnimationFrame(() => this.render(callbackFn));
-        }, 1000 / this.fps);
+    render() {
+        const animate = () => {
+            setTimeout(() => {
+                window.requestAnimationFrame(animate);
+            }, 1000 / this.fps);
 
-        callbackFn();
+            // Add animation
+        };
+        animate();
     }
 }
 
-const canvas = new Canvas(60);
+const canvas = new Canvas(FPS);
 
 const app = () => {
-    canvas.init();
-    canvas.render(canvas.ctx.fillRect(10, 10, 100, 100));
+    canvas.init(BACKGROUND_COLOR);
+    canvas.render();
 };
 
 const reload = () => {
-    canvas.init();
+    canvas.init(BACKGROUND_COLOR);
 };
 
 window.addEventListener('load', app);
