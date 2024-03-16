@@ -9,10 +9,11 @@ const MAX_SIZE = 70;
 const MIN_SPEED = 1;
 const MAX_SPEED = 5;
 const ACCELERATION = 1.02;
+const TOTAL_RATIO = 20;
 
 let WIDTH = innerWidth;
 let HEIGHT = innerHeight;
-let TOTAL = WIDTH / 50;
+let TOTAL = Math.floor(WIDTH / TOTAL_RATIO);
 
 const $body = document.querySelector('body') as HTMLBodyElement;
 const $canvas = document.getElementById('canvas') as HTMLCanvasElement;
@@ -26,7 +27,7 @@ $body.style.backgroundColor = BACKGROUND_COLOR;
 const init = () => {
     WIDTH = innerWidth;
     HEIGHT = innerHeight;
-    TOTAL = WIDTH / 50;
+    TOTAL = Math.floor(WIDTH / TOTAL_RATIO);
 
     $canvas.style.width = `${WIDTH}px`;
     $canvas.style.height = `${HEIGHT}px`;
